@@ -83,7 +83,7 @@ void MapKey::PrintMap(){
 
 unsigned long long MapKey::HeadReader(ifstream& fin){
     int key, q;
-    int len=0;
+    unsigned long long len=0;
     fin.read((char*)&q,sizeof(q));
     char s;
     for(int i=0;i<q;i++){

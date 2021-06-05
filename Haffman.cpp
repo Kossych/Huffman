@@ -48,7 +48,6 @@ Uzel::Uzel(Uzel *left, Uzel *right){
 int MapKey::CreateMap(ifstream& fin){
     char c;
     for(fin.get(c);!fin.eof();fin.get(c)) MK[c]++;
-    int i=1<<7,k=0;
     fin.clear();
     fin.seekg(0);
     return k;

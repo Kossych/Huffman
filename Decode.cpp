@@ -3,16 +3,20 @@
 
 
 int main(){
-    ifstream fin("Encode.txt");
+    ifstream fin("Encode.txt", ios::binary);
     if(!fin.is_open()){cout<<"error"; return 0;}
-    ofstream fout("Decode.txt");
+    ofstream fout("Decode.txt", ios::binary);
     if(!fout.is_open()){cout<<"error"; return 0;}
 
     MapKey a;
+    map<char,vector<bool>> buff;
 
     unsigned long long len=a.HeadReader(fin);
-    a.PrintMap();
+    //a.PrintMap();
     Uzel* h=a.CreateList();
+
+    CreateTable(h,buff);
+    PrintTable(buff);
 
     char s,tx;
     Uzel *tmp=h;

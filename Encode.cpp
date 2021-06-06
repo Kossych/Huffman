@@ -3,9 +3,9 @@
 
 
 int main(){
-    ifstream fin("Test.txt");
+    ifstream fin("Test.txt", ios::binary);
     if(!fin.is_open()){cout<<"error"; return 0;}
-    ofstream fout("Encode.txt");
+    ofstream fout("Encode.txt", ios::binary);
     if(!fout.is_open()){cout<<"error"; return 0;}
 
     MapKey a;
@@ -13,15 +13,19 @@ int main(){
 
     a.CreateMap(fin);
     Uzel* h=a.CreateList();
-    a.PrintMap();
+    //a.PrintMap();
     CreateTable(h, buff);
+    //PrintTable(buff);
     cout<<endl;
 
     int k=buff.size();
     fout.write((char*)&k, sizeof(k));
-    for(auto it = a.MK.begin(); it!= a.MK.end(); it++)
-    {
-        fout.write((char*)&it-> first, sizeof(it-> first)); fout.write((char*)&it -> second,sizeof(it -> second));
+    for(int i=0;i<256;i++){
+        if(a.MK[i]>0){
+            char c=char(i);
+            fout.write((char*)(&c), sizeof(c));
+			fout.write((char*)(&a.MK[i]), sizeof(a.MK[i]));
+        }
     }
     
     char s,tx=0;

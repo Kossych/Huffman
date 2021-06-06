@@ -20,12 +20,9 @@ int main(){
 
     int k=buff.size();
     fout.write((char*)&k, sizeof(k));
-    for(int i=0;i<256;i++){
-        if(a.MK[i]>0){
-            char c=char(i);
-            fout.write((char*)(&c), sizeof(c));
-			fout.write((char*)(&a.MK[i]), sizeof(a.MK[i]));
-        }
+    for(auto it = a.MK.begin(); it!= a.MK.end(); it++)
+    {
+        fout.write((char*)&it-> first, sizeof(it-> first)); fout.write((char*)&it -> second,sizeof(it -> second));
     }
     
     char s,tx=0;

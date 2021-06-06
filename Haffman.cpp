@@ -21,7 +21,7 @@ class Uzel{
 class MapKey{
     public:
     map<char, int> MK;
-    int CreateMap(ifstream& );
+    void CreateMap(ifstream& );
     void PrintMap();
     Uzel* CreateList();
     unsigned long long HeadReader(ifstream& );
@@ -45,12 +45,11 @@ Uzel::Uzel(Uzel *left, Uzel *right){
     r=right; l=left;
 }
 
-int MapKey::CreateMap(ifstream& fin){
+void MapKey::CreateMap(ifstream& fin){
     char c;
     for(fin.get(c);!fin.eof();fin.get(c)) MK[c]++;
     fin.clear();
     fin.seekg(0);
-    return k;
 }
 
 
